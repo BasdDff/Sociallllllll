@@ -1,0 +1,62 @@
+.post {
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    &__wrapper {
+        display: flex;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    &__postAvatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 9999px;
+    }
+    &__userData {
+        width: 100%;
+        font-size: 20px;
+        margin-left: 20px;
+    }
+    &__username {
+        margin-bottom: 5px;
+    }
+    &__tag {
+        font-style: italic;
+        margin-bottom: 15px;
+    }
+    &__editIconFlex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__inputDesc {
+        text-align: justify;
+        background-color: transparent;
+        color: inherit;
+        font-size: 20px;
+        padding: 2px;
+    }
+    &__fileWrapper {
+        padding: 20px;
+        position: relative;
+    }
+    &__fileImg {
+        width: 100%;
+        border-radius: 15px;
+    }
+    &__fileIcon {
+        position: absolute;
+        right: 20px;
+        top: 30px;
+        left: 30px;
+        cursor: pointer;
+    }
+    &__iconWrapper {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+}

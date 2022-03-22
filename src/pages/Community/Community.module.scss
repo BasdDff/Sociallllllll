@@ -1,0 +1,22 @@
+.community {
+    &__block {
+        display: flex;
+        align-items: center;
+        margin: 20px;
+    }
+    &__img {
+        width: 100px;
+        height: 100px;
+        border-radius: 9999px;
+    }
+    &__body {
+
+    }
+    &__title {
+        color: inherit;
+        font-size: 26px;
+    }
+    &__text {
+
+    }
+}

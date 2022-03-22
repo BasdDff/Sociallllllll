@@ -1,0 +1,28 @@
+.community {
+    margin: 20px;
+    &__block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__subBlock {
+        display: flex;
+        align-items: center;
+    }
+    &__img {
+        width: 100px;
+        height: 100px;
+        border-radius: 9999px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+    &__body {
+
+    }
+    &__title {
+        font-size: 30px;
+    }
+    &__text {
+        font-size: 20px;
+    }
+}

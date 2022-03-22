@@ -1,0 +1,99 @@
+.wrapper_no_width {
+    min-height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.navbarWrapper {
+    width: 20%;
+    @media (max-width: 1380px) {
+        width: 10%;
+    }
+    @media (max-width: 768px) {
+        position: fixed;
+        width: 100%;
+    }
+}
+
+.navbar {
+    width: 20%;
+    @media (max-width: 1380px) {
+        width: 10%;
+    }
+    position: fixed;
+    @media (max-width: 768px) {
+        position: fixed;
+        width: 100%;
+        background-color: rgba(0, 185, 255, 0.5);
+    }
+    padding: 20px;
+    @media (max-width: 768px) {
+        padding-left: 15px;
+        padding-right: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.route {
+    width: 60%;
+    @media (max-width: 992px) {
+        width: 90%;
+    }
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.widgetTabWrapper {
+    width: 20%;
+    @media (max-width: 992px) {
+        display: none;
+    }
+}
+
+.widgetTab {
+    width: 20%;
+    position: fixed;
+    padding: 20px;
+    @media (max-width: 1380px) {
+        width: 30%;
+    }
+}
+
+//.wrapper {
+//    display: grid;
+//    grid-template-columns: 0.5fr 1fr 0.5fr;
+//    grid-template-rows: 1fr;
+//    gap: 0px 0px;
+//    grid-template-areas: "navbarWrapper route widgetTabWrapper";
+//    width: 100%;
+//    height: 100%;
+//}
+//
+//.navbarWrapper {
+//    grid-area: navbarWrapper;
+//}
+//
+//.navbar {
+//    position: fixed;
+//    width: inherit;
+//    padding: 20px;
+//}
+//
+//.route {
+//    grid-area: route;
+//    min-height: 100vh;
+//}
+//
+//.widgetTabWrapper {
+//    grid-area: widgetTabWrapper;
+//    position: fixed;
+//    padding: 20px;
+//}
+//
+//.widgetTab {
+//    width: inherit;
+//}

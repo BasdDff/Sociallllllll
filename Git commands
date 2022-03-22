@@ -1,0 +1,146 @@
+npx create-react-app react-learn
+
+
+//cкопировать репозиторий
+git clone https://github.com/it-kamasutra/react-way-of-samurai.git
+
+//графический интерфейс дерево-версий (коммитов)
+gitk --all&
+
+//перейти на другие версии
+git checkout 58557edea8720b2bb6044a48a6987d6d95b66c49(SHA1 ID)
+
+git status - проверяет есть ли незакомиченные файлы текущего локального репозитория (сравнивает твой локальный репозиторий с тем что на гитхабе)
+//если изменили файл то надо либо закомитить либо откатить обратно, чтобы откатить делаем
+git checkout src/App.js - откат
+//если хотим закомитить и отправить на сервак
+git add index.html - меняем статус, теперь гит следит за этим файлом
+git commit -am "added new file index.html" - комитим наш новый файл (фиксируем изменения и даем комментарий что сделали)
+git push - отправляет комиченные изменения на репозиторий
+
+//принимаем файл
+git pull - забираем свежие изменения
+
+//=================================================
+
+git init
+
+//добавлякт все файлы и папки в статус ожидания к комиту
+git add .
+*.html - все файлы с таким расширением
+css/* - все файлы из такой папки
+css/**/.html - выберет все дочерние папки и папку css и из нее все файлы html
+!css/style.css - выберет все файлы из папки css кроме файла style.css
+git add !index.html - выберет все файлы кроме index.html
+
+//можем удалить из ожидания какой либо файл
+//git rm --cached name_file
+
+// -m "комментарий" такая запись добавляет комментарий к комиту
+git commit -m "first-commit"
+
+//вывод всех изменений нашего проекта
+git log
+git log --oneline выведет в сокращенной форме
+
+//=================================================
+
+//remote - означает что сервер удаленный
+//add - добавить
+//origin - имя (можно любое, не origin)
+//далее ссылка на наш репозиторий
+git remote add origin https://github.com/BasdDff/react-1.git
+git push -u origin master
+
+//=================================================
+
+git commit --amend //Если надо отменить коммит(поменял название)
+
+
+
+
+
+
+
+
+
+
+// взять
+git remote add -f origin https://github.com/BasdDff/webProjectSocialSPA.git
+
+git checkout master //не работает юзаем следущую команду
+
+//git checkout -b backmaster хуетаа -создать новую ветку
+
+git add .
+git commit -m "commit"
+git push origin backmaster
+git push origin master
+
+//HEROKU
+
+https://dashboard.heroku.com/apps/gentle-harbor-45887/deploy/heroku-git
+
+heroku run bash -a obscure-savannah-28972
+ls - выводит все файлы
+
+
+
+
+
+
+
+
+
+…or create a new repository on the command line
+echo "# aqua" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/BasdDff/aqua.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/BasdDff/aqua.git
+git branch -M main
+git push -u origin main
+
+…or import code from another repository
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//firebase
+
+//npm run build
+
+//npm i -g firebase-tools
+
+//firebase login
+
+//firebase init
+
+//выбираем папку build (вместо public)
+
+//y (index)
+
+//n (github)
+
+//n (overwrite)
+
+//firebase deploy

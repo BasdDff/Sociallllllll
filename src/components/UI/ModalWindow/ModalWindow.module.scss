@@ -1,0 +1,50 @@
+.btn {
+    color: inherit;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.modal {
+    cursor: default;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s;
+    &.active {
+        //transform: scale(1);
+        opacity: 1;
+        pointer-events: all;
+    }
+    &__content {
+        padding: 20px;
+        border-radius: 12px;
+        transform: scale(0.5);
+        transition: 0.4s all;
+        width: 50vw;
+        &.active {
+            transform: scale(1);
+        }
+        @media (max-width: 768px) {
+            width: 100vw;
+            height: 100vh;
+            border-radius: 0;
+        }
+    }
+}
+
+.close {
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+}

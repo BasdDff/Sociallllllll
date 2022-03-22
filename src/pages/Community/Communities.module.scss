@@ -1,0 +1,15 @@
+.span {
+    border: 1px solid black;
+    border-radius: 100%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.selectedPage {
+    color: red;
+}

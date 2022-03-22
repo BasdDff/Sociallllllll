@@ -1,0 +1,125 @@
+.nav {
+    height: 45px;
+    //width: 100%;
+    display: flex;
+    align-items: center;
+}
+.menu {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transition: all 0.2s;
+    transform: translateX(-180%);
+    z-index: 2;
+    //transform: ${props => props.active ? "0" : "translateX(-150%)"}
+}
+.content {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s;
+    background-color: var(--background-color-var);
+    @media (max-width: 768px) {
+        width: 60%;
+    }
+    @media (max-width: 480px) {
+        width: 80%;
+    }
+}
+
+.blur {
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    position: absolute;
+    left: 50%;
+    @media (max-width: 768px) {
+        left: 60%;
+    }
+    @media (max-width: 480px) {
+        left: 80%;
+    }
+}
+
+.contentHomePage {
+    color: white;
+}
+.contentOthersPage {
+    color: white;
+}
+
+.menuButton {
+    position: relative;
+    display: block;
+    height: 20px;
+    width: 30px;
+    flex: 0 0 30px;
+    z-index: 3;
+    margin-right: 15px;
+    cursor: pointer;
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        transition: all 0.3s ease 0s;
+        z-index: 3;
+        background-color: var(--burger-background-color-var)
+    }
+
+    &:before {
+        top: 0;
+    }
+
+    &:after {
+        bottom: 0;
+    }
+
+    &._active {
+        position: fixed;
+        top: 0;
+        right: 50%;
+        margin-top: 15px;
+        margin-right: 15px;
+        @media (max-width: 768px) {
+            right: 40%;
+        }
+        @media (max-width: 480px) {
+            right: 20%;
+        }
+    }
+
+    &._active:before {
+        transform: rotate(45deg);
+        top: 9px;
+    }
+
+    &._active:after {
+        transform: rotate(-45deg);
+        bottom: 9px;
+    }
+
+    &._active span {
+        transform: scale(0);
+    }
+
+    span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        top: 9px;
+        transition: all 0.3s ease 0s;
+        background-color: var(--burger-background-color-var)
+    }
+}
+
+.menu.active {
+    transform: translateX(0);
+}
+

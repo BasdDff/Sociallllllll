@@ -1,0 +1,195 @@
+.profile {
+    padding: 20px;
+    @media (max-width: 480px) {
+        padding: 10px;
+    }
+    &__background {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+}
+
+.profileInfo {
+    &__pic {
+
+    }
+
+    &__picAndEditFlex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__profilePicture {
+        border-radius: 50%;
+        width: 174px;
+        height: 174px;
+        margin-top: -80px;
+        margin-bottom: 10px;
+        @media (max-width: 1170px) {
+            width: 160px;
+            height: 160px;
+        }
+        @media (max-width: 992px) {
+            width: 140px;
+            height: 140px;
+        }
+        @media (max-width: 768px) {
+            width: 120px;
+            height: 120px;
+        }
+    }
+
+    &__edit {
+        cursor: pointer;
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 25px;
+        padding-right: 25px;
+        margin-bottom: 10px;
+    }
+
+    &__exitFlex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__username {
+        font-size: 20px;
+    }
+
+    &__exit {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    &__buttonExit {
+        color: inherit;
+        background-color: inherit;
+        font-size: 18px;
+    }
+
+    &__tag {
+        font-size: 20px;
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+
+    &__biography {
+        border-radius: 10px;
+        font-size: 18px;
+        text-align: justify;
+        margin-bottom: 10px;
+    }
+
+    &__birthdayFlex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    &__address {
+        display: flex;
+        align-items: center;
+    }
+
+    &__addressIcon {
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+
+    &__country {
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+
+    &__city {
+
+    }
+
+    &__birthday {
+        display: flex;
+        align-items: center;
+    }
+
+    &__birthdayIcon {
+    }
+
+    &__genderFlex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+
+    &__joinedDay {
+        display: flex;
+        align-items: center;
+    }
+
+    &__joinedDayIcon {
+        margin-right: 5px;
+    }
+
+    &__gender {
+
+    }
+
+    &__links {
+        border-radius: 10px;
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 480px) {
+        overflow-x: auto;
+    }
+    @media (max-width: 560px) {
+        overflow-x: auto;
+    }
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    &__contentPart {
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        @media (max-width: 560px) {
+            flex: 0 0 10%;
+            &:not(:last-child) {
+                margin-right: 15px;
+            }
+        }
+    }
+}
