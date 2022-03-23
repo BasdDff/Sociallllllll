@@ -24,8 +24,6 @@ import {useDispatch, useSelector} from "react-redux";
 const Post = ({
                   userId,
                   _id,
-                  tag,
-                  profilePicture,
                   description,
                   image,
                   likes,
@@ -73,13 +71,13 @@ const Post = ({
     return (
         <>
             {editMode ?
-                <EditPost profilePicture={profilePicture} description={description} image={image} _id={_id}
-                          username={user.username} tag={tag}
+                <EditPost profilePicture={user.profilePicture} description={description} image={image} _id={_id}
+                          username={user.username} tag={user.tag}
                           setEditMode={setEditMode} editPost={editPost}/>
                 :
                 <DivBackgroundSecondary classN={styles.post}>
                     <div className={styles.post__wrapper}>
-                        <ProfileAvatarDefault avatar={profilePicture} classN={styles.post__postAvatar}/>
+                        <ProfileAvatarDefault avatar={user.profilePicture} classN={styles.post__postAvatar}/>
                         <div className={styles.post__userData}>
                             <div className={styles.post__wrapperDots}>
                                 <NavLink to={`/profile/${userId}`}
@@ -95,12 +93,16 @@ const Post = ({
                                                 <div className={styles.post__itemControlText}>
                                                     Edit post
                                                 </div>
-                                                <EditIcon className={styles.post__icon}/>
+                                                <EditIcon
+                                                    className={`${styles.post__icon} ${styles.post__optionsIcon}`}/>
                                             </div>
                                             <div className={styles.post__itemControlModal}>
                                                 <ModalWindow name={"Delete post"}
                                                              active={modalActive} setActive={setModalActive}
-                                                             classN={styles.post__modalText}>
+                                                             classN={styles.post__modalText}
+                                                             widthContentMediaOne={"60vw"}
+                                                             heightContentMediaOne={"60vh"}
+                                                >
                                                     <div>
                                                         <div className={styles.post__deleteText}>
                                                             Delete post ?
@@ -110,13 +112,14 @@ const Post = ({
                                                         </button>
                                                     </div>
                                                 </ModalWindow>
-                                                <HighlightOffIcon className={styles.post__icon}/>
+                                                <HighlightOffIcon
+                                                    className={`${styles.post__icon} ${styles.post__optionsIcon}`}/>
                                             </div>
                                         </div>
                                     </div>
                                 </CheckAuth>
                             </div>
-                            <div className={styles.post__tag}> {tag} </div>
+                            <div className={styles.post__tag}> @{user.tag} </div>
                             <div className={styles.post__editIconFlex}>
                                 <div className={styles.post__description}> {description} </div>
                             </div>
@@ -131,7 +134,6 @@ const Post = ({
                         </ModalWindow>
                         : ""
                     }
-
                     <div className={styles.post__icons}>
                         <InsertCommentIcon className={styles.post__icon}/>
                         <div className={styles.post__likesWrapper}>

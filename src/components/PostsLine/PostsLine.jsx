@@ -8,7 +8,6 @@ const PostsLine = ({posts, tag, profilePicture}) => {
                 <Post key={post._id}
                                 userId={post.userId}
                                 _id={post._id}
-                                username={post.username}
                                 description={post.description}
                                 image={post.image}
                                 likes={post.likes}

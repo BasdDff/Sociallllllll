@@ -1,10 +1,10 @@
 import {useState} from "react";
 
-export const useFetching = (callback) => {
+export const useRequest = (callback) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState("")
 
-    const fetching = async () => {
+    const data = async () => {
         try {
             setIsLoading(true)
             await callback()
@@ -15,9 +15,9 @@ export const useFetching = (callback) => {
         }
     }
 
-    return [fetching, isLoading, error]
+    return [data, isLoading, error]
 }
 
-//const [fetchPosts, isPostsLoading, postError] = useFetching(async () => {
+//const [fetchPosts, isPostsLoading, postError] = useRequest(async () => {
 // ...request to server
 // })

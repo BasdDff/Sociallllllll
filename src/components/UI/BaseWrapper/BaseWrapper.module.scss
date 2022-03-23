@@ -8,6 +8,7 @@
 
 .navbarWrapper {
     width: 20%;
+    z-index: 10;
     @media (max-width: 1380px) {
         width: 10%;
     }

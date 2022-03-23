@@ -1,7 +1,14 @@
+@import "./src/utils/adaptiv-value";
+
 .newPost {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 30px;
+    @media (max-width: 992px) {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
     &__wrapper {
 
     }
@@ -16,6 +23,14 @@
         height: 100px;
         border-radius: 9999px;
         margin-right: 20px;
+        @media (max-width: 768px) {
+            width: 70px;
+            height: 70px;
+        }
+        @media (max-width: 480px) {
+            width: 50px;
+            height: 50px;
+        }
     }
     &__inputText {
         width: 100%;
@@ -23,7 +38,7 @@
         text-align: justify;
         background-color: inherit;
         color: inherit;
-        font-size: 20px;
+        @include adaptiv-value("font-size", 20, 16, 1);
     }
     &__inputText::-webkit-input-placeholder {
         color: inherit;
@@ -40,10 +55,10 @@
     &__fileIcon {
         position: absolute;
         right: 20px;
-        top: 30px;
+        top: 50px;
         left: 30px;
         cursor: pointer;
-        color: black;
+        color: inherit;
     }
     &__bottom {
         display: flex;
@@ -57,25 +72,34 @@
         align-items: center;
         cursor: pointer;
         border-radius: 10px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
+        @include adaptiv-value("padding-top", 10, 6, 1);
+        @include adaptiv-value("padding-bottom", 10, 6, 1);
+        @include adaptiv-value("padding-left", 10, 6, 1);
+        @include adaptiv-value("padding-right", 10, 6, 1);
+        @media (max-width: 480px) {
+            width: 160%;
+        }
     }
     &__optionIcon {
         margin-right: 5px;
+        @media (max-width: 1170px) {
+            transform: scale(0.9);
+        }
+        @media (max-width: 768px) {
+            transform: scale(0.75);
+        }
     }
     &__optionText {
-        font-size: 20px;
+        @include adaptiv-value("font-size", 20, 16, 1);
     }
     &__shareButton{
-        font-size: 20px;
+        @include adaptiv-value("font-size", 20, 16, 1);
         background-color: inherit;
         color: inherit;
         border-radius: 10px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 30px;
-        padding-right: 30px;
+        @include adaptiv-value("padding-top", 10, 6, 1);
+        @include adaptiv-value("padding-bottom", 10, 6, 1);
+        @include adaptiv-value("padding-left", 30, 20, 1);
+        @include adaptiv-value("padding-right", 30, 20, 1);
     }
 }

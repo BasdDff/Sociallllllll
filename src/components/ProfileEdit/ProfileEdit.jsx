@@ -17,6 +17,7 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import "./DatePicker.css"
 import SvgSuccessAnimated from "../UI/SvgSuccessAnimated/SvgSuccessAnimated";
+import {useInput} from "../../hooks/useInput";
 
 const ProfileEdit = () => {
 
@@ -46,10 +47,10 @@ const ProfileEdit = () => {
         dispatch(changeUserBirthdayThunkCreator(startDate, setIsSuccessRequestDate))
     }
 
-    const [tag, setTag] = useState("")
+    const tag = useInput(user.tag)
 
     const changeTag = () => {
-        dispatch(changeTagThunkCreator(tag))
+        dispatch(changeTagThunkCreator(tag.value))
     }
 
     return (
@@ -129,9 +130,7 @@ const ProfileEdit = () => {
                 </DivBackgroundSecondary>
             </DivBorderBottom>
             <div className={styles.tag__wrapper}>
-                <Input className={styles.tag__input} onChange={(event) => {
-                    setTag(event.target.value)
-                }}/>
+                <Input className={styles.tag__input} {...tag}/>
                 <ButtonBorderBackgroundHover onClick={changeTag} className={styles.tag__button}> Change tag </ButtonBorderBackgroundHover>
             </div>
         </div>

@@ -5,6 +5,7 @@ import UserService from "../../../services/UserService";
 import ProfileAvatarDefault from "../../UI/DefaultImages/AvatarUserDefault/AvatarUserDefault";
 import {NavLink} from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
+import useDebounce from "../../../hooks/useDebounce";
 
 const Search = () => {
 
@@ -22,18 +23,23 @@ const Search = () => {
 
     useOnClickOutside(ref, () => setActiveSearch(false));
 
+    const searchUsers = async () => {
+        await UserService.searchUsers(text)
+            .then(response => {
+                setUsers(response.data)
+            })
+    }
+
+    const debouncedSearch = useDebounce(searchUsers, 500)
+
     const search = (event) => {
         setText(event.target.value)
     }
 
     useEffect(() => {
-        const searchUsers = async () => {
-            await UserService.searchUsers(text)
-                .then(response => {
-                    setUsers(response.data)
-                })
+        if (text) {
+            debouncedSearch(text)
         }
-        searchUsers()
     }, [text])
 
     return (

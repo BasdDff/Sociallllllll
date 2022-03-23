@@ -68,7 +68,8 @@ const ProfileInfo = ({profile}) => {
                                         setModalActive(!modalActive)
                                     }}>
                                         <ModalWindow name={"Edit profile"} active={modalActive}
-                                                     setActive={setModalActive}>
+                                                     setActive={setModalActive} widthContentMediaOne={"100vw"}
+                                                     heightContentMediaOne={"100vh"}>
                                             <ProfileEdit/>
                                         </ModalWindow>
                                     </DivBorderBackgroundHover>
