@@ -40,7 +40,7 @@ const LoginForm = () => {
                                    className={styles.login__input}/>
                             <Field name="password" placeholder="password"
                                    className={styles.login__input}/>
-                            <ButtonBackground classN={styles.login__buttonCreateAccount}>
+                            <ButtonBackground classN={styles.login__buttonLogin}>
                                 Log in
                             </ButtonBackground>
                         </FormikStyledForm>

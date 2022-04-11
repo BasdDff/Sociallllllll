@@ -79,7 +79,7 @@ const FindUsers = () => {
                 <div className={styles.search__wrapper}>
                     <DivBackgroundSecondary classN={styles.search__container}>
                         <SearchIcon className={styles.search__icon}/>
-                        <Input classN={styles.search__input} placeholder="Search" onChange={search}
+                        <Input className={styles.search__input} placeholder="Search" onChange={search}
                                value={filter.query}/>
                     </DivBackgroundSecondary>
                     <DivBackgroundSecondary classN={styles.search__container}>
@@ -107,12 +107,12 @@ const FindUsers = () => {
                             </div>
                             <div>
                                 {user.followers.includes(authorizedUserId) ?
-                                    <ButtonBorderBackgroundHover tag="button" onClick={() => {
+                                    <ButtonBorderBackgroundHover onClick={() => {
                                         onUnfollow(user._id, authorizedUserId)
-                                    }} classN={styles.button}>Unfollow</ButtonBorderBackgroundHover> :
-                                    <ButtonBorderBackgroundHover tag="button" onClick={() => {
+                                    }} className={styles.button}>Unfollow</ButtonBorderBackgroundHover> :
+                                    <ButtonBorderBackgroundHover onClick={() => {
                                         onFollow(user._id, authorizedUserId)
-                                    }} classN={styles.button}> Follow
+                                    }} className={styles.button}> Follow
                                     </ButtonBorderBackgroundHover>}
                             </div>
                         </div>

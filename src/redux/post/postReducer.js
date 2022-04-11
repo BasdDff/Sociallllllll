@@ -71,6 +71,7 @@ const postReducer = (state = initialState, action) => {
 }
 
 const setPosts = (posts) => {
+    console.log("action-creator")
     return {type: SET_POSTS, posts: posts}
 }
 
@@ -108,6 +109,7 @@ export const getUserPostsThunkCreator = (userId) => {
         dispatch(toggleLoading(true))
         await PostService.fetchPost(userId)
             .then((response) => {
+                console.log(response)
                 dispatch(setPosts(response.data))
                 dispatch(toggleLoading(false))
             })

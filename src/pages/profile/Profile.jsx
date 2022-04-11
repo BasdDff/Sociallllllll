@@ -6,9 +6,7 @@ import {useParams} from "react-router-dom";
 import BaseWrapper from "../../components/UI/BaseWrapper/BaseWrapper";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 import {getUserPostsThunkCreator} from "../../redux/post/postReducer";
-import Post from "../../components/Post/Post";
 import Preloader from "../../components/UI/Preloader/Preloader";
-import Loader from "../../components/UI/Loader/Loader";
 import PostsLine from "../../components/PostsLine/PostsLine";
 
 const Profile = () => {
@@ -28,9 +26,9 @@ const Profile = () => {
             dispatch(getUserPostsThunkCreator(userId))
         } else {
             dispatch(getUserProfileThunkCreator())
-            dispatch(getUserPostsThunkCreator(authorizedUserId))
+            dispatch(getUserPostsThunkCreator())
         }
-    }, [userId, authorizedUserId])
+    }, [userId])
 
     return (
         <BaseWrapper>
