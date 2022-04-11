@@ -73,12 +73,20 @@ class PostController {
     }
 
     async getPostsByUserId(request, response, next) {
-        try {
-            const currentUser = await postService.findUserById(request.params.userId)
+        if (request.user._id) {
+            const currentUser = await postService.findUserById(request.user._id)
             const userPosts = await postService.findPostsById({userId: currentUser._id})
             response.status(200).json(userPosts)
-        } catch (error) {
-            response.status(500).json(error)
+        } else {
+            try {
+                if (request.params.userId) {
+                    const currentUser = await postService.findUserById(request.params.userId)
+                    const userPosts = await postService.findPostsById({userId: currentUser._id})
+                    response.status(200).json(userPosts)
+                }
+            } catch (error) {
+                response.status(500).json(error)
+            }
         }
     }
 
