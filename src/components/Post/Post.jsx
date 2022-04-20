@@ -12,14 +12,10 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import ModalWindow from "../UI/ModalWindow/ModalWindow";
 import {NavLink} from 'react-router-dom'
-import {DivBackgroundSecondary} from "../UI/ThemesTags/Components";
+import {BackgroundSecondary} from "../UI/ThemeTags/Components";
 import UserService from "../../services/UserService";
-import {
-    editUserPostThunkCreator,
-    likePostThunkCreator,
-    deletePostThunkCreator
-} from "../../redux/post/postReducer";
 import {useDispatch, useSelector} from "react-redux";
+import {deletePostThunkCreator, editUserPostThunkCreator, likePostThunkCreator} from "../../redux/actions/post";
 
 const Post = ({
                   userId,
@@ -75,7 +71,7 @@ const Post = ({
                           username={user.username} tag={user.tag}
                           setEditMode={setEditMode} editPost={editPost}/>
                 :
-                <DivBackgroundSecondary classN={styles.post}>
+                <BackgroundSecondary className={styles.post}>
                     <div className={styles.post__wrapper}>
                         <ProfileAvatarDefault avatar={user.profilePicture} classN={styles.post__postAvatar}/>
                         <div className={styles.post__userData}>
@@ -145,7 +141,7 @@ const Post = ({
                         </div>
                         <ShareIcon className={styles.post__icon}/>
                     </div>
-                </DivBackgroundSecondary>
+                </BackgroundSecondary>
             }
         </>
     )

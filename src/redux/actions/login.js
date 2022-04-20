@@ -1,64 +1,26 @@
-import axios from "axios"
-import {API_URL} from "../../http"
-import AuthService from "../../services/AuthService"
-
-const LOGIN = "loginReducer/LOGIN"
-const REGISTRATION = "loginReducer/REGISTRATION"
-const CHECK_AUTH = "loginReducer/CHECK_AUTH"
-const LOGOUT = "loginReducer/LOGOUT"
-const AUTHORIZED_USER_ID = "loginReducer/AUTHORIZED_USER_ID"
-const IS_INITIALIZED = "loginReducer/IS_INITIALIZED"
-
-let initialState = {
-    isAuth: false,
-    authorizedUserId: "",
-    isInitialized: false,
-    email: "",
-}
-
-const loginReducer = (state = initialState, action) => {
-    if (action.type === LOGIN) {
-        return {
-            ...state,
-            isAuth: true,
-        }
-    } else if (action.type === REGISTRATION) {
-        return {
-            ...state,
-            email: action.email
-        }
-    } else if (action.type === CHECK_AUTH) {
-        return {
-            ...state,
-            isAuth: true,
-        }
-    } else if (action.type === AUTHORIZED_USER_ID) {
-        return {
-            ...state,
-            authorizedUserId: action.authorizedUserId
-        }
-    } else if (action.type === IS_INITIALIZED) {
-        return {
-            ...state,
-            isInitialized: true
-        }
-    } else if (action.type === LOGOUT) {
-        return {
-            ...state,
-            isAuth: false,
-            email: ""
-        }
-    } else {
-        return state
-    }
-}
+import {
+    AUTHORIZED_USER_ID,
+    CHECK_AUTH,
+    IS_INITIALIZED,
+    LOGIN,
+    LOGOUT,
+    REGISTRATION,
+    SET_ERROR
+} from "../reducers/loginReducer";
+import AuthService from "../../services/AuthService";
+import axios from "axios";
+import {API_URL} from "../../http";
 
 export const setUserLoginActionCreator = () => {
     return {type: LOGIN}
 }
 
 export const emailActionCreator = (email) => {
-    return {type: REGISTRATION, email: email}
+    return {type: REGISTRATION, email}
+}
+
+export const setError = (error) => {
+    return {type: SET_ERROR, error}
 }
 
 export const checkAuthActionCreator = () => {
@@ -66,7 +28,7 @@ export const checkAuthActionCreator = () => {
 }
 
 export const setAuthorizedUserIdActionCreator = (authorizedUserId) => {
-    return {type: AUTHORIZED_USER_ID, authorizedUserId: authorizedUserId}
+    return {type: AUTHORIZED_USER_ID, authorizedUserId}
 }
 
 export const setIsInitializedActionCreator = () => {
@@ -92,9 +54,11 @@ export const loginThunkCreator = (email, password) => {
             .then((response) => {
                 localStorage.setItem("token", response.data.accessToken)
                 dispatch(setUserLoginActionCreator())
+                dispatch(setAuthorizedUserIdActionCreator(response.data.user._id))
                 dispatch(setIsInitializedActionCreator())
             })
             .catch((error) => {
+                dispatch(setError("Incorrect email or password."))
                 console.log(error)
             })
     }
@@ -128,5 +92,3 @@ export const logoutThunkCreator = () => {
         }
     }
 }
-
-export default loginReducer

@@ -1,10 +1,10 @@
 import { applyMiddleware, combineReducers, createStore } from "redux"
 import thunkMiddleware from "redux-thunk"
 
-import userReducer from "./user/userReducer"
-import loginReducer from "./login/loginReducer"
-import communityReducer from "./community/communityReducer";
-import postReducer from "./post/postReducer";
+import userReducer from "./reducers/userReducer"
+import loginReducer from "./reducers/loginReducer"
+import communityReducer from "./reducers/communityReducer";
+import postReducer from "./reducers/postReducer";
 
 let reducers = combineReducers({
     user: userReducer,

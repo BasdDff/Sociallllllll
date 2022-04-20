@@ -5,7 +5,7 @@ export const itemsNavigation = [
     {
         id: 1,
         value: "Profile",
-        link: "/profile",
+        link: "/Profile",
         icon: <PetsIcon/>,
     },
     {

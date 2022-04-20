@@ -1,13 +1,10 @@
 import React, {useEffect} from 'react'
 import styles from './Communities.module.scss'
 import {useDispatch, useSelector} from "react-redux";
-import {
-    getCommunitiesChangedThunkCreator,
-    getCommunitiesThunkCreator
-} from "../../redux/community/communityReducer";
 import Community from "./Community";
 import {MyPaginator} from "../../utils/Paginators/MyPaginator";
 import BaseWrapper from "../../components/UI/BaseWrapper/BaseWrapper";
+import {getCommunitiesChangedThunkCreator, getCommunitiesThunkCreator} from "../../redux/actions/community";
 
 const Communities = () => {
 

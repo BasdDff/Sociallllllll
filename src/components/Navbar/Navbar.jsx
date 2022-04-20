@@ -1,9 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import styles from './Navbar.module.scss'
-import PetsIcon from '@material-ui/icons/Pets';
-import GroupIcon from '@mui/icons-material/Group';
-import {NavLinkBackgroundSecondary, DivBorder} from "../UI/ThemesTags/Components";
-import {NavLink} from "react-router-dom";
+import {NavLinkBackgroundSecondary, DivBorder, BackgroundSecondary} from "../UI/ThemeTags/Components";
 import MenuBurger from "../UI/MenuBurger/MenuBurger";
 import {itemsNavigation} from "../../assets/itemsNavigation";
 import {useDarkMode} from "../../utils/Themes/useDarkMode";
@@ -11,6 +8,7 @@ import {darkTheme, lightTheme, mainTheme} from "../../utils/Themes/themes";
 import {ThemeProvider} from "styled-components";
 import {GlobalStyles} from "../../utils/Themes/globalStyles";
 import Search from "../WidgetTab/Search/Search";
+import {NavLink} from "react-router-dom";
 
 const Navbar = () => {
 
@@ -35,7 +33,7 @@ const Navbar = () => {
                             <ul className={styles.menu__list}>
                                 {itemsNavigation.map(item =>
                                     <li className={styles.menu__item} key={item.id}>
-                                        <NavLinkBackgroundSecondary to={item.link} classN={styles.menu__link}
+                                        <BackgroundSecondary tag={NavLink} to={item.link} className={styles.menu__link}
                                                                     activeClassName={`_active`}>
                                             <div className={styles.menu__img}>
                                                 {item.icon}
@@ -43,7 +41,7 @@ const Navbar = () => {
                                             <div className={styles.menu__text}>
                                                 {item.value}
                                             </div>
-                                        </NavLinkBackgroundSecondary>
+                                        </BackgroundSecondary>
                                     </li>
                                 )}
                             </ul>
@@ -59,7 +57,7 @@ const Navbar = () => {
                 <ul className={styles.nav__list}>
                     {itemsNavigation.map(item =>
                         <li key={item.id}>
-                            <NavLinkBackgroundSecondary to={item.link} classN={styles.nav__link}
+                            <BackgroundSecondary tag={NavLink} to={item.link} className={styles.nav__link}
                                                         activeClassName={`_active`}>
                                 <div className={styles.nav__img}>
                                     {item.icon}
@@ -67,7 +65,7 @@ const Navbar = () => {
                                 <div className={styles.nav__text}>
                                     {item.value}
                                 </div>
-                            </NavLinkBackgroundSecondary>
+                            </BackgroundSecondary>
                         </li>
                     )}
                 </ul>

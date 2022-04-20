@@ -3,7 +3,7 @@ import styles from './ProfileInfo.module.scss'
 import BackgroundUserDefault from "../UI/DefaultImages/BackgroundUserDefault/BackgroundUserDefault";
 import AvatarUserDefault from "../UI/DefaultImages/AvatarUserDefault/AvatarUserDefault";
 import CheckAuth from "../../utils/CheckAuth/CheckAuth";
-import {DivBorder, DivBorderBackgroundHover} from "../UI/ThemesTags/Components";
+import {Border, BorderBackgroundHover} from "../UI/ThemeTags/Components";
 import ModalWindow from "../UI/ModalWindow/ModalWindow";
 import ProfileEdit from "../ProfileEdit/ProfileEdit";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -15,8 +15,8 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import {useDispatch, useSelector} from "react-redux";
-import {logoutThunkCreator} from "../../redux/login/loginReducer";
+import {useDispatch} from "react-redux";
+import {logoutThunkCreator} from "../../redux/actions/login";
 
 const ProfileInfo = ({profile}) => {
 
@@ -28,16 +28,6 @@ const ProfileInfo = ({profile}) => {
 
     const [modalActive, setModalActive] = useState(false)
 
-    let year
-    let month
-    let day
-
-    if (profile.joinedDay) {
-        let date = new Date(profile.joinedDay)
-        year = date.getFullYear()
-        month = date.getMonth()
-        day = date.getUTCDate()
-    }
 
     let linkElement = () => {
         if (profile.links) {
@@ -64,25 +54,25 @@ const ProfileInfo = ({profile}) => {
                                                classN={styles.profileInfo__profilePicture}/>
                             <CheckAuth _id={profile._id}>
                                 <div className={styles.profileInfo__editWrapper}>
-                                    <DivBorderBackgroundHover classN={styles.profileInfo__edit} onClick={() => {
+                                    <BorderBackgroundHover className={styles.profileInfo__edit} onClick={() => {
                                         setModalActive(!modalActive)
                                     }}>
-                                        <ModalWindow name={"Edit profile"} active={modalActive}
+                                        <ModalWindow name={"Edit Profile"} active={modalActive}
                                                      setActive={setModalActive} widthContentMediaOne={"100vw"}
                                                      heightContentMediaOne={"100vh"}>
                                             <ProfileEdit/>
                                         </ModalWindow>
-                                    </DivBorderBackgroundHover>
+                                    </BorderBackgroundHover>
                                 </div>
                             </CheckAuth>
                         </div>
                         <div className={styles.profileInfo__exitFlex}>
                             <div className={styles.profileInfo__username}> {profile.username} </div>
                             <CheckAuth _id={profile._id}>
-                                <DivBorderBackgroundHover classN={styles.profileInfo__exit} onClick={logout}>
+                                <BorderBackgroundHover className={styles.profileInfo__exit} onClick={logout}>
                                     <ExitToAppIcon/>
                                     <button className={styles.profileInfo__buttonExit}> Logout</button>
-                                </DivBorderBackgroundHover>
+                                </BorderBackgroundHover>
                             </CheckAuth>
                         </div>
                         <div className={styles.profileInfo__tag}> @{profile.tag} </div>
@@ -95,20 +85,30 @@ const ProfileInfo = ({profile}) => {
                             </div>
                             <div className={styles.profileInfo__birthday}>
                                 <CakeIcon className={styles.profileInfo__birthdayIcon}/>
-                                {profile.birthday}
+                                {new Date(profile.birthday).toLocaleString("ru", {
+                                    year: "numeric",
+                                    month: "numeric",
+                                    day: "numeric",
+                                    timezone: "UTC"
+                                })}
                             </div>
                         </div>
                         <div className={styles.profileInfo__genderFlex}>
                             <div className={styles.profileInfo__joinedDay}>
                                 <DateRangeIcon className={styles.profileInfo__joinedDayIcon}/>
-                                Joined {year}.{month + 1}.{day}
+                                Joined {new Date(profile.joinedDay).toLocaleString("ru", {
+                                year: "numeric",
+                                month: "numeric",
+                                day: "numeric",
+                                timezone: "UTC"
+                            })}
                             </div>
                             <div className={styles.profileInfo__gender}>
                                 male
                             </div>
                         </div>
                     </div>
-                    <DivBorder classN={styles.profileInfo__links}>
+                    <Border className={styles.profileInfo__links}>
                         <Accordion>
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon/>}
@@ -124,23 +124,23 @@ const ProfileInfo = ({profile}) => {
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
-                    </DivBorder>
+                    </Border>
                     <div className={styles.content}>
-                        <DivBorderBackgroundHover classN={styles.content__contentPart}>
+                        <BorderBackgroundHover className={styles.content__contentPart}>
                             Posts
-                        </DivBorderBackgroundHover>
-                        <DivBorderBackgroundHover classN={styles.content__contentPart}>
+                        </BorderBackgroundHover>
+                        <BorderBackgroundHover className={styles.content__contentPart}>
                             Media
-                        </DivBorderBackgroundHover>
-                        <DivBorderBackgroundHover classN={styles.content__contentPart}>
+                        </BorderBackgroundHover>
+                        <BorderBackgroundHover className={styles.content__contentPart}>
                             Replies
-                        </DivBorderBackgroundHover>
-                        <DivBorderBackgroundHover classN={styles.content__contentPart}>
+                        </BorderBackgroundHover>
+                        <BorderBackgroundHover className={styles.content__contentPart}>
                             Likes
-                        </DivBorderBackgroundHover>
-                        <DivBorderBackgroundHover classN={styles.content__contentPart}>
+                        </BorderBackgroundHover>
+                        <BorderBackgroundHover className={styles.content__contentPart}>
                             About
-                        </DivBorderBackgroundHover>
+                        </BorderBackgroundHover>
                     </div>
                 </div>
             </div>

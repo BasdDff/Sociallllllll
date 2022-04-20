@@ -1,11 +1,9 @@
 import React from 'react'
 import styles from "./Registration.module.scss"
 import {useDispatch} from "react-redux";
-import {
-    registrationThunkCreator
-} from "../../redux/login/loginReducer";
-import {Formik, Field} from "formik";
-import {ButtonBackground, FormikStyledForm} from "../../components/UI/ThemesTags/Components";
+import {Formik, Field, Form} from "formik";
+import {validateEmail, validatePassword, validateUsername} from "../../utils/validations/validateEmail";
+import {registrationThunkCreator} from "../../redux/actions/login";
 
 const Registration = () => {
 
@@ -36,19 +34,24 @@ const Registration = () => {
                         registration(values.email, values.password, values.username)
                     }}
                     enableReinitialize={true}
+                    validateOnBlur={false}
+                    validateOnChange={false}
                 >
                     {({errors, touched}) => (
-                        <FormikStyledForm classN={styles.login__loginForm}>
+                        <Form className={styles.login__loginForm}>
                             <Field name="email" placeholder="email"
-                                   className={styles.login__input}/>
+                                   className={styles.login__input} validate={validateEmail}/>
+                            {errors.email && touched.email && <div className={styles.login__input_error}>{errors.email}</div>}
                             <Field name="password" placeholder="password" type="password"
-                                   className={styles.login__input}/>
+                                   className={styles.login__input} validate={validatePassword}/>
+                            {errors.password && touched.password && <div className={`${styles.login__input_error} ${styles.login__password_error}`}>{errors.password}</div>}
                             <Field name="username" placeholder="username"
-                                   className={styles.login__input}/>
-                            <ButtonBackground classN={styles.login__buttonCreateAccount}>
+                                   className={styles.login__input} validate={validateUsername}/>
+                            {errors.username && touched.username && <div className={`${styles.login__input_error} ${styles.login__username_error}`}>{errors.username}</div>}
+                            <button className={styles.login__buttonCreateAccount}>
                                 Reg
-                            </ButtonBackground>
-                        </FormikStyledForm>
+                            </button>
+                        </Form>
                     )}
                 </Formik>
             </div>

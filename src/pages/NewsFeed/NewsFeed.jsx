@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react'
-    import styles from './NewsFeed.module.scss'
+import styles from './NewsFeed.module.scss'
 import BaseWrapper from "../../components/UI/BaseWrapper/BaseWrapper";
 import {useDispatch, useSelector} from "react-redux";
-import {getUserProfileThunkCreator} from "../../redux/user/userReducer";
-import {getTimelinePosts} from "../../redux/post/postReducer";
-import Post from "../../components/Post/Post";
 import PostsLine from "../../components/PostsLine/PostsLine";
+import {getTimelinePosts} from "../../redux/actions/post";
+import {getUserProfileThunkCreator} from "../../redux/actions/user";
 
 const NewsFeed = () => {
 

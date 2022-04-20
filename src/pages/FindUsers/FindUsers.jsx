@@ -2,22 +2,16 @@ import React, {useEffect, useState} from 'react'
 import styles from './FindUsers.module.scss'
 import BaseWrapper from "../../components/UI/BaseWrapper/BaseWrapper";
 import {useDispatch, useSelector} from "react-redux";
-import {
-    follow,
-    getScrollUsers,
-    setFetchingScroll,
-    unfollow
-} from "../../redux/user/userReducer";
 import ProfileAvatarDefault from "../../components/UI/DefaultImages/AvatarUserDefault/AvatarUserDefault";
 import {
-    DivBackgroundSecondary,
-    Input,
-    ButtonBorderBackgroundHover,
+    BackgroundSecondary,
+    BorderBackgroundHover,
     Select
-} from "../../components/UI/ThemesTags/Components";
+} from "../../components/UI/ThemeTags/Components";
 import SearchIcon from "@mui/icons-material/Search";
 import CategoryIcon from '@mui/icons-material/Category';
 import {useFiltersUsers} from "../../hooks/useFiltersUsers";
+import {follow, getScrollUsers, setFetchingScroll, unfollow} from "../../redux/actions/user";
 
 const FindUsers = () => {
 
@@ -77,12 +71,12 @@ const FindUsers = () => {
                     Users
                 </div>
                 <div className={styles.search__wrapper}>
-                    <DivBackgroundSecondary classN={styles.search__container}>
+                    <BackgroundSecondary className={styles.search__container}>
                         <SearchIcon className={styles.search__icon}/>
-                        <Input className={styles.search__input} placeholder="Search" onChange={search}
+                        <BackgroundSecondary tag="input" className={styles.search__input} placeholder="Search" onChange={search}
                                value={filter.query}/>
-                    </DivBackgroundSecondary>
-                    <DivBackgroundSecondary classN={styles.search__container}>
+                    </BackgroundSecondary>
+                    <BackgroundSecondary className={styles.search__container}>
                         <CategoryIcon className={styles.search__icon}/>
                         <Select
                             value={filter.sort}
@@ -94,7 +88,7 @@ const FindUsers = () => {
                             ]}
                             classN={styles.search__select}
                         />
-                    </DivBackgroundSecondary>
+                    </BackgroundSecondary>
                 </div>
                 <div className={styles.container}>
                     {filteredUsers.map((user) => (
@@ -107,13 +101,13 @@ const FindUsers = () => {
                             </div>
                             <div>
                                 {user.followers.includes(authorizedUserId) ?
-                                    <ButtonBorderBackgroundHover onClick={() => {
+                                    <BorderBackgroundHover tag="button" onClick={() => {
                                         onUnfollow(user._id, authorizedUserId)
-                                    }} className={styles.button}>Unfollow</ButtonBorderBackgroundHover> :
-                                    <ButtonBorderBackgroundHover onClick={() => {
+                                    }} className={styles.button}>Unfollow</BorderBackgroundHover> :
+                                    <BorderBackgroundHover tag="button" onClick={() => {
                                         onFollow(user._id, authorizedUserId)
                                     }} className={styles.button}> Follow
-                                    </ButtonBorderBackgroundHover>}
+                                    </BorderBackgroundHover>}
                             </div>
                         </div>
                     ))}

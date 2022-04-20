@@ -23,6 +23,7 @@
         justify-content: space-between;
         border-radius: 10px;
         padding: 25px;
+        position: relative;
     }
     &__input {
         border-radius: 10px;
@@ -32,10 +33,25 @@
         padding-top: 10px;
         padding-bottom: 10px;
         margin-bottom: 15px;
+        background-color: #f1f1f1;
+    }
+    &__input_error {
+        position: absolute;
+        top: 25px + 10px;
+        left: 275px;
+        width: 100%;
+    }
+    &__password_error {
+        top: 90px;
+    }
+    &__username_error {
+        top: 148px;
     }
     &__buttonCreateAccount {
         border-radius: 10px;
         font-size: 20px;
+        border: 1px solid #000;
+        background-color: transparent;
         padding-top: 5px;
         padding-bottom: 5px;
     }

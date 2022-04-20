@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 import {compose} from "redux";
 import CommunityId from "./CommunityId";
-import {getCommunityByIdThunkCreator} from "../../../redux/community/communityReducer";
+import {getCommunityByIdThunkCreator} from "../../../redux/actions/community";
 
 class CommunityIdContainer extends React.Component {
 
@@ -27,13 +27,14 @@ class CommunityIdContainer extends React.Component {
 }
 
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         isAuth: state.loginPage.isAuth,
         community: state.communityPage.community,
     }
 }
-let mapDispatchToProps = (dispatch) => {
+
+const mapDispatchToProps = (dispatch) => {
     return {
         setCommunityById: (communityId) => {
             dispatch(getCommunityByIdThunkCreator(communityId))

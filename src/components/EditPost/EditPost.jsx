@@ -4,7 +4,7 @@ import ProfileAvatarDefault from "../UI/DefaultImages/AvatarUserDefault/AvatarUs
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from "@material-ui/icons/Cancel";
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
-import {DivBorder} from "../UI/ThemesTags/Components";
+import {Border} from "../UI/ThemeTags/Components";
 
 const EditPost = ({profilePicture, description, image, _id, username, tag, theme, setEditMode, editPost}) => {
 
@@ -23,11 +23,11 @@ const EditPost = ({profilePicture, description, image, _id, username, tag, theme
                     <div className={styles.post__username}> {username} </div>
                     <div className={styles.post__tag}> {tag} </div>
                     <div className={styles.post__editIconFlex}>
-                        <DivBorder>
+                        <Border>
                             <input value={desc} className={styles.post__inputDesc} onChange={(event) => {
                                 setDesc(event.target.value)
                             }}/>
-                        </DivBorder>
+                        </Border>
                         {file && (
                             <div className={styles.post__fileWrapper}>
                                 <img className={styles.post__fileImg} src={file} alt={``}/>

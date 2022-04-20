@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import styles from './Search.module.scss'
-import {DivBackgroundSecondary, Input} from "../../UI/ThemesTags/Components";
+import {BackgroundSecondary} from "../../UI/ThemeTags/Components";
 import UserService from "../../../services/UserService";
 import ProfileAvatarDefault from "../../UI/DefaultImages/AvatarUserDefault/AvatarUserDefault";
 import {NavLink} from "react-router-dom";
@@ -44,12 +44,12 @@ const Search = () => {
 
     return (
         <div className={activeSearch ? `${styles.search} ${styles.active}` : styles.search}>
-            <DivBackgroundSecondary classN={activeSearch ? `${styles.search__container} ${styles.active}` : styles.search__container}>
+            <BackgroundSecondary className={activeSearch ? `${styles.search__container} ${styles.active}` : styles.search__container}>
                 <SearchIcon className={styles.search__icon}/>
-                <Input className={styles.search__input} placeholder="Search" onChange={search}
+                <BackgroundSecondary tag="input" className={styles.search__input} placeholder="Search" onChange={search}
                        onFocus={activeSearchClick}
                 />
-            </DivBackgroundSecondary>
+            </BackgroundSecondary>
             {activeSearch && <div className={styles.result__wrapper} ref={ref}>
                 {users.length ? users.map((user, index) => (
                         <div className={styles.result__block} key={user._id}>

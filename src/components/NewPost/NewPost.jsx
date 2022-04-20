@@ -7,13 +7,12 @@ import PostService from "../../services/PostService";
 import CheckAuth from "../../utils/CheckAuth/CheckAuth";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    DivBackgroundSecondary,
-    DivBorderBottom,
-    ButtonBorderBackgroundHover,
-    LabelBorderBackgroundHover
-} from "../UI/ThemesTags/Components";
+    BackgroundSecondary,
+    BorderBottom,
+    BorderBackgroundHover
+} from "../UI/ThemeTags/Components";
 import ProfileAvatarDefault from "../UI/DefaultImages/AvatarUserDefault/AvatarUserDefault";
-import {addPostActionCreator} from "../../redux/post/postReducer";
+import {addPostActionCreator} from "../../redux/actions/post";
 
 const NewPost = () => {
 
@@ -48,6 +47,7 @@ const NewPost = () => {
                     if (response.status === 200) {
                         dispatch(addPostActionCreator(response.data))
                         setDescription("")
+                        setFile(null)
                     }
                 })
             //window.location.reload();
@@ -59,9 +59,9 @@ const NewPost = () => {
 
     return (
         <CheckAuth _id={profile._id}>
-            <DivBackgroundSecondary classN={styles.newPost}>
+            <BackgroundSecondary className={styles.newPost}>
                 <div className={styles.newPost__wrapper}>
-                    <DivBorderBottom classN={styles.newPost__top}>
+                    <BorderBottom className={styles.newPost__top}>
                         <ProfileAvatarDefault avatar={profile.profilePicture} classN={styles.newPost__postAvatar}/>
                         <input className={styles.newPost__inputText}
                                placeholder={`What's in your mind ${profile.username} ?`}
@@ -69,7 +69,7 @@ const NewPost = () => {
                                onChange={(event) => {
                                    setDescription(event.target.value)
                                }}/>
-                    </DivBorderBottom>
+                    </BorderBottom>
                     {file && (
                         <div className={styles.newPost__fileWrapper}>
                             <img className={styles.newPost__fileImg} src={URL.createObjectURL(file)} alt={``}/>
@@ -78,19 +78,19 @@ const NewPost = () => {
                     )}
                     <form className={styles.newPost__bottom} onSubmit={submitHandler}>
                         <div className={styles.newPost__options}>
-                            <LabelBorderBackgroundHover htmlFor={`file`} classN={styles.newPost__option}>
+                            <BorderBackgroundHover tag="label" htmlFor={`file`} className={styles.newPost__option}>
                                 <PermMediaIcon htmlColor={`tomato`} className={styles.newPost__optionIcon}/>
                                 <span className={styles.newPost__optionText}> Photo or Video </span>
                                 <input style={{display: "none"}} type={`file`} id={`file`} accept={`.png,.jpeg,.jpg`}
                                        onChange={(e) => setFile(e.target.files[0])}/>
-                            </LabelBorderBackgroundHover>
+                            </BorderBackgroundHover>
                         </div>
-                        <ButtonBorderBackgroundHover className={styles.newPost__shareButton}>
+                        <BorderBackgroundHover tag="button" className={styles.newPost__shareButton}>
                             Share
-                        </ButtonBorderBackgroundHover>
+                        </BorderBackgroundHover>
                     </form>
                 </div>
-            </DivBackgroundSecondary>
+            </BackgroundSecondary>
         </CheckAuth>
     )
 }

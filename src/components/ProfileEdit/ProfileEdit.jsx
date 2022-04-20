@@ -1,23 +1,23 @@
 import React, {useEffect, useState} from 'react'
 import styles from './ProfileEdit.module.scss'
 import {useDispatch, useSelector} from "react-redux"
-import {
-    changeTagThunkCreator,
-    changeUserBirthdayThunkCreator,
-    editUserInfoProfileThunkCreator
-} from "../../redux/user/userReducer"
 import {Formik, Form} from "formik"
 import {
-    DivBackgroundSecondary,
-    DivBorderBottom,
+    BackgroundSecondary,
+    BorderBottom,
     FormikStyledField,
-    ButtonSecondaryBackground, Input, ButtonBorderBackgroundHover
-} from "../UI/ThemesTags/Components"
+    SecondaryBackground, BorderBackgroundHover,
+} from "../UI/ThemeTags/Components"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import "./DatePicker.css"
 import SvgSuccessAnimated from "../UI/SvgSuccessAnimated/SvgSuccessAnimated";
 import {useInput} from "../../hooks/useInput";
+import {
+    changeTagThunkCreator,
+    changeUserBirthdayThunkCreator,
+    editUserInfoProfileThunkCreator
+} from "../../redux/actions/user";
 
 const ProfileEdit = () => {
 
@@ -55,9 +55,9 @@ const ProfileEdit = () => {
 
     return (
         <div className={styles.profileEdit}>
-            <DivBorderBottom classN={styles.profileEdit__title}>
+            <BorderBottom className={styles.profileEdit__title}>
                 Basic info
-            </DivBorderBottom>
+            </BorderBottom>
             <Formik
                 initialValues={{
                     username: user.username,
@@ -80,7 +80,7 @@ const ProfileEdit = () => {
             >
                 {({errors, touched}) => (
                     <Form>
-                        <DivBorderBottom classN={styles.profileEdit__inputs}>
+                        <BorderBottom className={styles.profileEdit__inputs}>
                             <div>
                                 <div className={styles.profileEdit__inputFlex}>
                                     <label className={styles.profileEdit__labelInput}> Username </label> <br/>
@@ -103,15 +103,15 @@ const ProfileEdit = () => {
                                                        classN={styles.profileEdit__input}/>
                                 </div>
                             </div>
-                            <ButtonSecondaryBackground classN={styles.profileEdit__sendButton}>
+                            <SecondaryBackground tag="button" className={styles.profileEdit__sendButton}>
                                 Send
-                            </ButtonSecondaryBackground>
-                        </DivBorderBottom>
+                            </SecondaryBackground>
+                        </BorderBottom>
                     </Form>
                 )}
             </Formik>
-            <DivBorderBottom classN={styles.birthday__borderBottom}>
-                <DivBackgroundSecondary classN={styles.birthday__wrapper}>
+            <BorderBottom className={styles.birthday__borderBottom}>
+                <BackgroundSecondary className={styles.birthday__wrapper}>
                     <div className={styles.birthday__title}>
                         Date birthday
                     </div>
@@ -127,11 +127,11 @@ const ProfileEdit = () => {
                             Success change birthday! <SvgSuccessAnimated className={styles.birthday__icon}/>
                         </div>}
                     </div>
-                </DivBackgroundSecondary>
-            </DivBorderBottom>
+                </BackgroundSecondary>
+            </BorderBottom>
             <div className={styles.tag__wrapper}>
-                <Input className={styles.tag__input} {...tag}/>
-                <ButtonBorderBackgroundHover onClick={changeTag} className={styles.tag__button}> Change tag </ButtonBorderBackgroundHover>
+                <BackgroundSecondary tag="input" className={styles.tag__input} {...tag}/>
+                <BorderBackgroundHover tag="button" onClick={changeTag} className={styles.tag__button}> Change tag </BorderBackgroundHover>
             </div>
         </div>
     )

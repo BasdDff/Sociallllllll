@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from "./LoginForm.module.scss"
-import {useDispatch} from "react-redux";
-import {loginThunkCreator} from "../../redux/login/loginReducer";
-import {Formik, Field} from "formik";
-import {ButtonBackground, FormikStyledForm} from "../../components/UI/ThemesTags/Components";
+import {useDispatch, useSelector} from "react-redux";
+import {Formik, Field, Form} from "formik";
+import {validateEmail} from "../../utils/validations/validateEmail";
+import {loginThunkCreator} from "../../redux/actions/login";
 
 const LoginForm = () => {
 
@@ -12,6 +12,8 @@ const LoginForm = () => {
     const login = (email, password) => {
         dispatch(loginThunkCreator(email, password))
     }
+
+    const error = useSelector(state => state.loginPage.error)
 
     return (
         <div className={styles.login}>
@@ -33,17 +35,23 @@ const LoginForm = () => {
                         login(values.email, values.password)
                     }}
                     enableReinitialize={true}
+                    validateOnBlur={false}
+                    validateOnChange={false}
                 >
                     {({errors, touched}) => (
-                        <FormikStyledForm classN={styles.login__loginForm}>
+                        <Form className={styles.login__loginForm}>
                             <Field name="email" placeholder="email"
-                                   className={styles.login__input}/>
+                                   className={styles.login__input} validate={validateEmail}/>
+                            {errors.email && touched.email ? <div className={styles.login__input_error}>{errors.email}</div>
+                                :
+                                error && <div className={styles.login__input_error}>{error}</div>
+                            }
                             <Field name="password" placeholder="password"
                                    className={styles.login__input}/>
-                            <ButtonBackground classN={styles.login__buttonLogin}>
+                            <button className={styles.login__buttonLogin}>
                                 Log in
-                            </ButtonBackground>
-                        </FormikStyledForm>
+                            </button>
+                        </Form>
                     )}
                 </Formik>
             </div>

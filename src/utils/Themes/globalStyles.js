@@ -51,16 +51,6 @@ export const GlobalStyles = createGlobalStyle`
         background: ${({theme}) => theme.backgroundInputSecondary};
     }
     
-    .lightBackgroundForm {
-        background: ${({theme}) => theme.backgroundForm};
-    }
-    .moonBackgroundForm {
-        background: ${({theme}) => theme.backgroundForm};
-    }
-    .mainBackgroundForm {
-        background: ${({theme}) => theme.backgroundForm};
-    }
-
     .lightBackgroundHoverButton:hover {
       @media (any-hover) {
         background: ${({theme}) => theme.backgroundButton};
